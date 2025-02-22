@@ -1,8 +1,11 @@
 <?php
 
-use App\Livewire\Dashboard\DashboardComponent;
-use App\Livewire\TestComponent;
-use App\Livewire\Users\UserComponent;
+use App\Livewire\{
+    Dashboard\DashboardComponent,
+    TestComponent,
+    Users\Repository\UserRepositoryComponent,
+    Users\UserComponent
+};
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,6 +23,9 @@ Route::middleware([
 
     Route::prefix('user')->group(function () {
         Route::get('/index/{user}', UserComponent::class)->name('user.index');
+
+        Route::get('/repo/{user}/{repo}', UserRepositoryComponent::class)->name('user.repo');
+//        Route::get('/repo/{data}', UserRepositoryComponent::class)->name('user.repo');
     });
 
     Route::get('/test-new-layout', function () {

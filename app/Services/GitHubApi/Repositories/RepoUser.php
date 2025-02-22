@@ -29,6 +29,8 @@ class RepoUser
 
             $repos = json_decode($response->getBody(), true);
 
+
+
             // Mapeia apenas as informações necessárias
             return array_map(function($repo) {
                 return [

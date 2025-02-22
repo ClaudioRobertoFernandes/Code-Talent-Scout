@@ -170,7 +170,10 @@
                                                         <td>
                                                             <div class="flex flex-col gap-2">
                                                                 <span class="text-2sm text-gray-600 leading-3">
-                                                                    <a href="{{ route('user.index', $user['login']) }}">
+                                                                    <a
+                                                                        href="{{ route('user.index', $user['login']) }}"
+                                                                        wire:navigate
+                                                                    >
                                                                         <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
                                                                              src="{{ $user['avatar_url'] }}" alt=""/>
                                                                     </a>
