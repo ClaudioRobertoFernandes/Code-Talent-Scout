@@ -25,7 +25,7 @@ Route::middleware([
         Route::get('/index/{user}', UserComponent::class)->name('user.index');
 
         Route::get('/repo/{user}/{repo}', UserRepositoryComponent::class)->name('user.repo');
-//        Route::get('/repo/{data}', UserRepositoryComponent::class)->name('user.repo');
+
     });
 
     Route::get('/test-new-layout', function () {

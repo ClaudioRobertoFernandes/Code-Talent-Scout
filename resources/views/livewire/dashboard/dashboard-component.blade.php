@@ -126,7 +126,7 @@
                                                 <th class="w-[60px]">
                                                     <input class="checkbox checkbox-sm" data-datatable-check="true" type="checkbox"/>
                                                 </th>
-                                                <th class="w-[280px]">
+                                                <th class="w-[100px]">
                                                     <span class="sort asc">
                                                         <span class="sort-label">
                                                             Avatar
@@ -174,7 +174,7 @@
                                                                         href="{{ route('user.index', $user['login']) }}"
                                                                         wire:navigate
                                                                     >
-                                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
+                                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[50px]"
                                                                              src="{{ $user['avatar_url'] }}" alt=""/>
                                                                     </a>
 
@@ -202,7 +202,6 @@
                                                                 <span class="text-2sm text-gray-600 leading-3">
                                                                     {{ $user['user_view_type'] }}
                                                                 </span>
-
                                                             </div>
                                                         </td>
                                                     </tr>

@@ -10,6 +10,7 @@ class Repository
 {
     public static function getRepository($user, $repository): ?array
     {
+//        dd($user. ' - ' .$repository);
         $client = new Client([
             'base_uri' => 'https://api.github.com',
             'headers' => [

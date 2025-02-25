@@ -21,6 +21,7 @@ class UserComponent extends Component
     public $location;
     public int $publicRepos = 0;
     public int $followers = 0;
+    public int $totalStars = 0;
     public array $repositories = [];
 
     public function mount($user): void
@@ -49,6 +50,10 @@ class UserComponent extends Component
             $this->publicRepos = $userGit['public_repos'] ??  '';
             $this->followers = $userGit['followers'] ??  '';
             $this->repositories = RepoUser::getRepoUser($userGit['login']);
+        }
+
+        foreach ($this->repositories as $repository){
+            $this->totalStars += $repository['stars'];
         }
 
     }

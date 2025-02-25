@@ -34,6 +34,14 @@
                 </div>
                 <div class="flex flex-wrap justify-center gap-1 lg:gap-4.5 text-sm">
                     <div class="flex gap-1.25 items-center">
+                        <i class="ki-filled ki-star text-warning"></i>
+                        <span class="text-gray-600">
+                            {{ $totalStars ? Number::abbreviate($totalStars, precision: 2) : 0 }}
+                        </span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap justify-center gap-1 lg:gap-4.5 text-sm">
+                    <div class="flex gap-1.25 items-center">
                         <i class="ki-outline ki-home text-gray-500 text-sm"></i>
                         <span class="text-gray-600">
                             {{ $company ?? '' }}
@@ -140,7 +148,7 @@
                                     wire:navigate
                                     class="btn btn-light btn-sm">
                                     <i class="ki-filled ki-check-circle"></i>
-                                    Joined
+                                    {{ __('Visualization Repository') }}
                                 </a>
                             </div>
                         </div>
