@@ -20,8 +20,8 @@ class RepoUser
         try {
             $response = $client->get("/users/{$username}/repos", [
                 'query' => [
-                    'type' => 'all',
-                    'sort' => 'created',
+                    'type' => 'owner',
+                    'sort' => 'stars',
                     'direction' => 'desc',
                     'per_page' => 100
                 ]
@@ -29,7 +29,10 @@ class RepoUser
 
             $repos = json_decode($response->getBody(), true);
 
-            // Mapeia apenas as informações necessárias
+            usort($repos, function($a, $b) {
+                return $b['stargazers_count'] <=> $a['stargazers_count'];
+            });
+
             return array_map(function($repo) {
                 return [
                     'name' => $repo['name'],

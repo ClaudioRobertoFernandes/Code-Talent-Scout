@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View as ViewView;
+use Livewire\Attributes\Session;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -21,17 +22,19 @@ class DashboardComponent extends Component
     protected $baseUrl = 'https://api.github.com';
     public $users = [];
     public $query = '';
+
     public $programmingLanguage = '';
     public $perPage = 10;
+
     public $location = '';
+
     public $minFollowers = 0;
     public $totalUsers = 0;
+
     public $maxFollowers = 0;
     public function updatingPerPage($value): void
     {
-        $this->resetPage();
-        $this->perPage = $value;
-        $this->search();
+        // nothing
     }
     public function search(): void
     {
@@ -82,36 +85,6 @@ class DashboardComponent extends Component
         }
     }
 
-    public static function getUserRepositoriesWithStars(string $username, $token = null): int
-    {
-        $token = $token ?? config('services.github.token');
-
-        $client = new Client([
-            'base_uri' => 'https://api.github.com',
-            'headers' => [
-                'Authorization' => "token {$token}",
-                'Accept' => 'application/vnd.github.v3+json',
-            ],
-        ]);
-
-        try {
-            $client->get("/users/{$username}/repos", [
-                'query' => [
-                    'per_page' => 1,
-                ]
-            ]);
-
-            $user = $client->get("/users/{$username}");
-            $userData = json_decode($user->getBody(), true);
-
-            return $userData['public_repos'] > 0 ? $userData['public_stargazers_count'] ?? 0 : 0;
-
-        } catch (\Exception $e) {
-            Log::error("GitHub Repositories Fetch Error for user {$username}: {$e->getMessage()}");
-            return 0;
-        }
-    }
-
     public function resetFields(): void
     {
         $this->query = '';
@@ -121,6 +94,7 @@ class DashboardComponent extends Component
         $this->maxFollowers = 0;
         $this->users = [];
     }
+
     public function render(): Factory|Application|View|ViewView
     {
         return view('livewire.dashboard.dashboard-component');
