@@ -34,8 +34,8 @@
                 />
                 <x-sidebar.sidebar-menu-item
                     icon="ki-filled ki-user text-lg"
-                    route="#"
-                    title="{{ __('Dashboard 2') }}"
+                    route="{{ route('user.selection') }}"
+                    title="{{ __('Selection Users') }}"
                 />
             </div>
         </div>
