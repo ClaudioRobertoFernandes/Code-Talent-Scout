@@ -15,8 +15,8 @@
     <div class="container-fixed">
         <div class="grid gap-5 lg:gap-7.5">
             <!-- begin: grid -->
-            <div class="grid lg:grid-cols-3 gap-y-5 lg:gap-7.5 items-stretch">
-                <div class="lg:col-span-1">
+            <div class="grid lg:grid-cols-4 gap-y-5 lg:gap-7.5 items-stretch">
+                <div class="lg:col-span-2">
                     <div class="grid grid-cols-2 gap-5 lg:gap-7.5 h-full items-stretch">
                         <style>
                             .channel-stats-bg {
@@ -27,47 +27,66 @@
                             }
                         </style>
                         <div class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
-                            <img alt="" class="w-7 mt-4 ms-5" src="{{ asset('assets/media/brand-logos/linkedin-2.svg') }}"/>
-                            <div class="flex flex-col gap-1 pb-4 px-5">
+                            <div class="pt-2 flex justify-center">
+                                <img alt="" class="text-center mt-4 relative rounded-full size-10" src="{{ asset('assets/media/avatars/blank.png') }}"/>
+                            </div>
+                            <div class="flex flex-col gap-1 pb-4 px-3">
                                 <span class="text-3xl font-semibold text-gray-900">
-                                    9.3k
+                                   {{ \Illuminate\Support\Number::format($countUsers, locale: 'pt-BR') }}
+                                    <span class="text-2xs font-medium text-gray-600">
+                                        User(s)
+                                    </span>
                                 </span>
                                 <span class="text-2sm font-medium text-gray-600">
-                                    Amazing mates
+                                    {{ __('Searched Users') }}
                                 </span>
                             </div>
                         </div>
                         <div class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
-                            <img alt="" class="w-7 mt-4 ms-5" src="{{ asset('assets/media/brand-logos/youtube-2.svg') }}"/>
-                            <div class="flex flex-col gap-1 pb-4 px-5">
+                            <div class="pt-2 flex justify-center">
+                                <img alt="" class="text-center mt-4 relative rounded-full size-10" src="{{ $publicRepos->avatarUrl }}"/>
+                            </div>
+                            <div class="flex flex-col gap-1 pb-4 px-3">
                                 <span class="text-3xl font-semibold text-gray-900">
-                                    24k
+                                    {{ \Illuminate\Support\Number::format($countRepos, locale: 'pt-BR') }}
+                                    <span class="text-2xs font-medium text-gray-600">
+                                        Repository(ies)
+                                    </span>
                                 </span>
                                 <span class="text-2sm font-medium text-gray-600">
-                                    Lessons Views
+                                    {{ $nameCountRepos }}
                                 </span>
                             </div>
                         </div>
                         <div class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
-                            <img alt="" class="w-7 mt-4 ms-5" src="{{ asset('assets/media/brand-logos/instagram-03.svg') }}"/>
-                            <div class="flex flex-col gap-1 pb-4 px-5">
+                            <div class="pt-2 flex justify-center">
+                                <img alt="" class="text-center mt-4 relative rounded-full size-10" src="{{ $followers->avatarUrl }}"/>
+                            </div>
+                            <div class="flex flex-col gap-1 pb-4 px-3">
                                 <span class="text-3xl font-semibold text-gray-900">
-                                    608
+                                    {{ \Illuminate\Support\Number::format($countFollowers, locale: 'pt-BR') }}
+                                    <span class="text-2xs font-medium text-gray-600">
+                                        Follower(s)
+                                    </span>
                                 </span>
                                 <span class="text-2sm font-medium text-gray-600">
-                                    New subscribers
+                                    {{ $nameCountFollowers }}
                                 </span>
                             </div>
                         </div>
                         <div class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
-                            <img alt="" class="dark:hidden w-7 mt-4 ms-5" src="{{ asset('assets/media/brand-logos/tiktok.svg') }}"/>
-                            <img alt="" class="light:hidden w-7 mt-4 ms-5" src="{{ asset('assets/media/brand-logos/tiktok-dark.svg') }}"/>
-                            <div class="flex flex-col gap-1 pb-4 px-5">
+                            <div class="pt-2 flex justify-center">
+                                <img alt="" class="text-center mt-4 relative rounded-full size-10" src="{{ $following->avatarUrl }}"/>
+                            </div>
+                            <div class="flex flex-col gap-1 pb-4 px-3">
                                 <span class="text-3xl font-semibold text-gray-900">
-                                    2.5k
+                                     {{ \Illuminate\Support\Number::format($countFollowings, locale: 'pt-BR') }}
+                                    <span class="text-2xs font-medium text-gray-600">
+                                        Following(s)
+                                    </span>
                                 </span>
                                 <span class="text-2sm font-medium text-gray-600">
-                                    Stream audience
+                                    {{ $nameCountFollowings }}
                                 </span>
                             </div>
                         </div>
@@ -128,7 +147,7 @@
                             </div>
                         </div>
                         <div class="card-footer justify-center">
-                            <a class="btn btn-link" href="{{ route('') }}">
+                            <a class="btn btn-link" href="{{ route('user.selection') }}">
                                 Search new users
                             </a>
                         </div>
