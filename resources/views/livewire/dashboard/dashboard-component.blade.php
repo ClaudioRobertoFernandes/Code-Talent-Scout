@@ -2,439 +2,378 @@
     <div class="container-fixed">
         <div class="flex flex-wrap items-center lg:items-end justify-between gap-5 pb-7.5">
             <div class="flex flex-col justify-center gap-2">
-                <h1 class="text-xl font-semibold leading-none text-gray-900">
-                    Dashboard
+                <h1 class="text-xl font-semibold leading-none text-gray-900 dark:text-gray-300">
+                    {{ __('Dashboard') }}
                 </h1>
-                <div class="flex items-center gap-2 text-sm font-medium text-gray-600">
-                    Central Hub for Personal Customization
+                <div class="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    {{ __('Central Hub for Personal Customization: '). $totalUsers }}
                 </div>
+            </div>
+            <div class="flex items-center gap-2.5">
+                <a class="btn btn-sm btn-light" href="{{ route('profile.show') }}">
+                    {{ __('View Profile') }}
+                </a>
             </div>
         </div>
     </div>
-
     <div class="container-fixed">
         <div class="grid gap-5 lg:gap-7.5">
-            <!-- begin: grid -->
-            <div class="grid lg:grid-cols-4 gap-y-5 lg:gap-7.5 items-stretch">
-                <div class="lg:col-span-2">
-                    <div class="grid grid-cols-2 gap-5 lg:gap-7.5 h-full items-stretch">
-                        <style>
-                            .channel-stats-bg {
-                                background-image: url({{ asset('assets/media/images/2600x1600/bg-3.png') }});
-                            }
-                            .dark .channel-stats-bg {
-                                background-image: url({{ asset('assets/media/images/2600x1600/bg-3-dark.png') }});
-                            }
-                        </style>
-                        <div class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
-                            <div class="pt-2 flex justify-center">
-                                <img alt="" class="text-center mt-4 relative rounded-full size-10" src="{{ asset('assets/media/avatars/blank.png') }}"/>
-                            </div>
-                            <div class="flex flex-col gap-1 pb-4 px-3">
-                                <span class="text-3xl font-semibold text-gray-900">
-                                   {{ \Illuminate\Support\Number::format($countUsers, locale: 'pt-BR') }}
-                                    <span class="text-2xs font-medium text-gray-600">
-                                        User(s)
-                                    </span>
-                                </span>
-                                <span class="text-2sm font-medium text-gray-600">
-                                    {{ __('Searched Users') }}
-                                </span>
-                            </div>
-                        </div>
-                        <div class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
-                            <div class="pt-2 flex justify-center">
-                                <img alt="" class="text-center mt-4 relative rounded-full size-10" src="{{ $publicRepos->avatarUrl }}"/>
-                            </div>
-                            <div class="flex flex-col gap-1 pb-4 px-3">
-                                <span class="text-3xl font-semibold text-gray-900">
-                                    {{ \Illuminate\Support\Number::format($countRepos, locale: 'pt-BR') }}
-                                    <span class="text-2xs font-medium text-gray-600">
-                                        Repository(ies)
-                                    </span>
-                                </span>
-                                <span class="text-2sm font-medium text-gray-600">
-                                    {{ $nameCountRepos }}
-                                </span>
-                            </div>
-                        </div>
-                        <div class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
-                            <div class="pt-2 flex justify-center">
-                                <img alt="" class="text-center mt-4 relative rounded-full size-10" src="{{ $followers->avatarUrl }}"/>
-                            </div>
-                            <div class="flex flex-col gap-1 pb-4 px-3">
-                                <span class="text-3xl font-semibold text-gray-900">
-                                    {{ \Illuminate\Support\Number::format($countFollowers, locale: 'pt-BR') }}
-                                    <span class="text-2xs font-medium text-gray-600">
-                                        Follower(s)
-                                    </span>
-                                </span>
-                                <span class="text-2sm font-medium text-gray-600">
-                                    {{ $nameCountFollowers }}
-                                </span>
-                            </div>
-                        </div>
-                        <div class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
-                            <div class="pt-2 flex justify-center">
-                                <img alt="" class="text-center mt-4 relative rounded-full size-10" src="{{ $following->avatarUrl }}"/>
-                            </div>
-                            <div class="flex flex-col gap-1 pb-4 px-3">
-                                <span class="text-3xl font-semibold text-gray-900">
-                                     {{ \Illuminate\Support\Number::format($countFollowings, locale: 'pt-BR') }}
-                                    <span class="text-2xs font-medium text-gray-600">
-                                        Following(s)
-                                    </span>
-                                </span>
-                                <span class="text-2sm font-medium text-gray-600">
-                                    {{ $nameCountFollowings }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-span-2">
-                    <style>
-                        .entry-callout-bg {
-                            background-image: url({{ asset('assets/media/images/2600x1600/2.png') }});
-                        }
-                        .dark .entry-callout-bg {
-                            background-image: url({{ asset('assets/media/images/2600x1600/2-dark.png') }});
-                        }
-                    </style>
-                    <div class="card h-full h-full">
-                        <div class="card-body p-10 bg-[length:80%] [background-position:175%_25%] bg-no-repeat entry-callout-bg">
-                            <div class="flex flex-col justify-center gap-4">
-                                <div class="flex -space-x-2">
-                                    <div class="flex">
-                                        <img
-                                            alt="#"
-                                            class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-10"
-                                            src="{{ asset('assets/media/avatars/300-4.png') }}"/>
-                                    </div>
-                                    <div class="flex">
-                                        <img
-                                            alt="#"
-                                            class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-10"
-                                             src="{{ asset('assets/media/avatars/300-1.png') }}"/>
-                                    </div>
-                                    <div class="flex">
-                                        <img
-                                            alt="#"
-                                            class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-10"
-                                             src="{{ asset('assets/media/avatars/300-2.png') }}"/>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-10 text-success-inverse text-xs ring-success-light bg-success">
-                                            S
-                                        </span>
-                                    </div>
-                                </div>
-                                <h2 class="text-1.5xl font-semibold text-gray-900">
-                                    Connect Today &amp; Join
-                                    <br/>
-                                    the
-                                    <a class="link" href="#">
-                                        KeenThemes Network
-                                    </a>
-                                </h2>
-                                <p class="text-sm font-medium text-gray-700 leading-5.5">
-                                    Enhance your projects with premium themes and
-                                    <br/>
-                                    templates. Join the KeenThemes community today
-                                    <br/>
-                                    for top-quality designs and resources.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card-footer justify-center">
-                            <a class="btn btn-link" href="{{ route('user.selection') }}">
-                                Search new users
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end: grid -->
-            <!-- begin: grid -->
             <div class="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-stretch">
-                <div class="lg:col-span-1">
-                    <div class="card h-full">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                Highlights
-                            </h3>
-                            <div class="menu" data-menu="true">
-                                <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
-                                    <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                                        <i class="ki-filled ki-dots-vertical">
+                <div class="lg:col-span-3">
+                    <div class="grid">
+                        <div class="card card-grid h-full min-w-full">
+                            <h3 class="card-title p-5">{{ __('Devs') }}</h3>
+                            <div class="card-header flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                                <form
+                                    class="flex flex-wrap gap-4 w-full md:w-auto justify-end"
+                                    wire:submit.prevent="search">
 
-                                        </i>
-                                    </button>
-                                    <div class="menu-dropdown menu-default w-full max-w-[200px]" data-menu-dismiss="true">
-                                        <div class="menu-item">
-                                            <a class="menu-link" href="html/demo1/account/activity.html">
-                                                <span class="menu-icon">
-                                                    <i class="ki-filled ki-cloud-change">
-
-                                                    </i>
-                                                </span>
-                                                <span class="menu-title">
-                                                    Activity
-                                                </span>
-                                            </a>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                                        <div class="form-control">
+                                            <x-label
+                                                class="mb-1.5"
+                                                for="searchName"
+                                                :value="__('user name')"
+                                            />
+                                            <x-input
+                                                class="input input-bordered input-sm w-full rounded"
+                                                type="text"
+                                                wire:model="searchName"
+                                                autofocus
+                                            />
                                         </div>
-                                        <div class="menu-item">
-                                            <a class="menu-link" data-modal-toggle="#share_profile_modal" href="#">
-                                                <span class="menu-icon">
-                                                    <i class="ki-filled ki-share">
 
-                                                    </i>
-                                                </span>
-                                                <span class="menu-title">
-                                                    Share
-                                                </span>
-                                            </a>
+                                        <!-- Filtro 2: Location -->
+                                        <div class="form-control">
+                                            <x-label
+                                                class="mb-1.5"
+                                                for="location"
+                                                :value="__('Location')"
+                                            />
+                                            <x-input
+                                                class="input input-bordered input-sm w-full rounded"
+                                                type="text"
+                                                wire:model="location"
+                                                autofocus
+                                            />
                                         </div>
-                                        <div class="menu-item" data-menu-item-offset="-15px, 0" data-menu-item-placement="right-start" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:hover">
-                                            <div class="menu-link">
-                                                <span class="menu-icon">
-                                                    <i class="ki-filled ki-notification-status">
 
-                                                    </i>
-                                                </span>
-                                                <span class="menu-title">
-                                                    Notifications
-                                                </span>
-                                                <span class="menu-arrow">
-                                                    <i class="ki-filled ki-right text-3xs">
+{{--                                        <!-- Filtro 2: Location -->--}}
+{{--                                        <div class="form-control">--}}
+{{--                                            <x-label--}}
+{{--                                                class="mb-1.5"--}}
+{{--                                                for="location"--}}
+{{--                                                :value="__('Location')"--}}
+{{--                                            />--}}
+{{--                                            <x-input--}}
+{{--                                                class="input input-bordered input-sm w-full rounded"--}}
+{{--                                                type="text"--}}
+{{--                                                wire:model="location"--}}
+{{--                                                autofocus--}}
+{{--                                            />--}}
+{{--                                        </div>--}}
 
-                                                    </i>
-                                                </span>
+{{--                                        <!-- Filtro 3: Min followers -->--}}
+{{--                                        <div class="form-control">--}}
+{{--                                            <x-label--}}
+{{--                                                class="mb-1.5"--}}
+{{--                                                for="minFollowers"--}}
+{{--                                                :value="__('Min followers')"--}}
+{{--                                            />--}}
+{{--                                            <x-input--}}
+{{--                                                class="input input-bordered input-sm w-full rounded"--}}
+{{--                                                type="number"--}}
+{{--                                                wire:model="minFollowers"--}}
+{{--                                                autofocus--}}
+{{--                                            />--}}
+{{--                                        </div>--}}
+
+{{--                                        <!-- Filtro 4: Max followers -->--}}
+{{--                                        <div class="form-control">--}}
+{{--                                            <x-label--}}
+{{--                                                class="mb-1.5"--}}
+{{--                                                for="maxFollowers"--}}
+{{--                                                :value="__('Max followers')"--}}
+{{--                                            />--}}
+{{--                                            <x-input--}}
+{{--                                                class="input input-bordered input-sm w-full rounded"--}}
+{{--                                                type="number"--}}
+{{--                                                wire:model="maxFollowers"--}}
+{{--                                                autofocus--}}
+{{--                                            />--}}
+{{--                                        </div>--}}
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+                                        <!-- Filtro 3: Min followers -->
+                                        <div class="form-control">
+                                            <x-label
+                                                class="mb-1.5"
+                                                for="minFollowers"
+                                                :value="__('Min followers')"
+                                            />
+                                            <x-input
+                                                class="input input-bordered input-sm w-full rounded"
+                                                type="number"
+                                                wire:model="minFollowers"
+                                                autofocus
+                                            />
+                                        </div>
+
+                                        <!-- Filtro 4: Max followers -->
+                                        <div class="form-control">
+                                            <x-label
+                                                class="mb-1.5"
+                                                for="maxFollowers"
+                                                :value="__('Max followers')"
+                                            />
+                                            <x-input
+                                                class="input input-bordered input-sm w-full rounded"
+                                                type="number"
+                                                wire:model="maxFollowers"
+                                                autofocus
+                                            />
+                                        </div>
+                                        <!-- Filtro 5: Min Repository -->
+                                        <div class="form-control">
+                                            <x-label
+                                                class="mb-1.5"
+                                                for="minRepos"
+                                                :value="__('Min Repository')"
+                                            />
+                                            <x-input
+                                                class="input input-bordered input-sm w-full rounded"
+                                                type="number"
+                                                wire:model="minRepos"
+                                                autofocus
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mt-4">
+
+
+                                        <!-- Filtro 6: Max Repository -->
+                                        <div class="form-control">
+                                            <x-label
+                                                class="mb-1.5"
+                                                for="maxRepos"
+                                                :value="__('Max Repository')"
+                                            />
+                                            <x-input
+                                                class="input input-bordered input-sm w-full rounded"
+                                                type="number"
+                                                wire:model="maxRepos"
+                                                autofocus
+                                            />
+                                        </div>
+                                        <div class="form-control">
+                                            <x-label
+                                                class="mb-1.5"
+                                                for="minStars"
+                                                :value="__('Min Stars')"
+                                            />
+                                            <x-input
+                                                class="input input-bordered input-sm w-full rounded"
+                                                type="number"
+                                                wire:model="minStars"
+                                                autofocus
+                                            />
+                                        </div>
+                                        <div class="form-control">
+                                            <x-label
+                                                class="mb-1.5"
+                                                for="maxStars"
+                                                :value="__('Max Stars')"
+                                            />
+                                            <x-input
+                                                class="input input-bordered input-sm w-full rounded"
+                                                type="number"
+                                                wire:model="maxStars"
+                                                autofocus
+                                            />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-control flex flex-row justify-end items-end gap-2">
+                                        <button
+                                            type="button"
+                                            wire:click="resetFields"
+                                            class="btn btn-sm btn-ghost"
+                                        >
+                                            {{ __('Reset') }}
+                                        </button>
+                                        <button
+                                            class="btn btn-sm btn-primary"
+                                            type="submit"
+                                        >
+                                            {{ __('Search') }}
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-body">
+                                <div data-datatable="true" data-datatable-page-size="5">
+                                    <div class="scrollable-x-auto">
+                                        <table class="table table-border" data-datatable-table="true">
+                                            <thead>
+                                            <tr>
+                                                <th class="w-[60px]">
+                                                    <input class="checkbox checkbox-sm" data-datatable-check="true" type="checkbox"/>
+                                                </th>
+                                                <th class="w-[100px]">
+                                                    <span class="sort asc">
+                                                        <span class="sort-label">
+                                                            Avatar
+                                                        </span>
+                                                    </span>
+                                                </th>
+                                                <th class="min-w-[135px]">
+                                                    <span class="sort">
+                                                        <span class="sort-label">
+                                                            NickName
+                                                        </span>
+                                                    </span>
+                                                </th>
+                                                <th class="min-w-[135px]">
+                                                    <span class="sort">
+                                                        <span class="sort-label">
+                                                            Tipo de usuario
+                                                        </span>
+                                                    </span>
+                                                </th>
+                                                <th class="min-w-[135px]">
+                                                    <span class="sort">
+                                                        <span class="sort-label">
+                                                            Tipo de perfil
+                                                        </span>
+                                                    </span>
+                                                </th>
+                                                <th class="min-w-[135px]">
+                                                    <span class="sort">
+                                                        <span class="sort-label">
+                                                            Stars
+                                                        </span>
+                                                    </span>
+                                                </th>
+                                                <th class="min-w-[135px]">
+                                                    <span class="sort">
+                                                        <span class="sort-label">
+                                                            Repositories
+                                                        </span>
+                                                    </span>
+                                                </th>
+                                                <th class="min-w-[135px]">
+                                                    <span class="sort">
+                                                        <span class="sort-label">
+                                                            Seguidores
+                                                        </span>
+                                                    </span>
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!-- Loading spinner centralizado -->
+                                            <div wire:loading class="fixed inset-0 flex items-center justify-center z-50">
+                                                <div class="flex flex-col items-center justify-center bg-gray-100 bg-opacity-75 w-full h-full">
+                                                    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500 mb-4"></div>
+                                                    <p class="text-gray-600 text-lg font-medium">Carregando...</p>
+                                                </div>
                                             </div>
-                                            <div class="menu-dropdown menu-default w-full max-w-[175px]">
-                                                <div class="menu-item">
-                                                    <a class="menu-link" href="html/demo1/account/home/settings-sidebar.html">
-                                                        <span class="menu-icon">
-                                                            <i class="ki-filled ki-sms">
 
-                                                            </i>
-                                                        </span>
-                                                        <span class="menu-title">
-                                                            Email
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                                <div class="menu-item">
-                                                    <a class="menu-link" href="html/demo1/account/home/settings-sidebar.html">
-                                                        <span class="menu-icon">
-                                                            <i class="ki-filled ki-message-notify">
+                                            <!-- Conteúdo principal (visível quando não estiver carregando) -->
+                                            <div wire:loading.remove>
+                                                @foreach($users as $user)
+                                                    <tr>
+                                                        <td>
+                                                            <input
+                                                                class="checkbox checkbox-sm"
+                                                                data-datatable-row-check="true"
+                                                                type="checkbox"
+                                                                value="{{ $user['id'] }}"/>
+                                                        </td>
+                                                        <td>
+                                                            <div class="flex flex-col gap-2">
+                                                                <span class="text-2sm text-gray-600 leading-3">
+                                                                    <a
+                                                                        href="{{ route('user.index', $user['login']) }}"
+                                                                        wire:navigate
+                                                                    >
+                                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[50px]"
+                                                                             src="{{ $user['avatar_url'] }}" alt=""/>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="flex flex-col gap-2">
+                                                                <span class="text-2sm text-gray-600 leading-3">
+                                                                    {{ $user['login'] }}
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="flex flex-col gap-2">
+                                                                <span class="text-2sm text-gray-600 leading-3">
+                                                                    {{ $user['type'] }}
+                                                                </span>
 
-                                                            </i>
-                                                        </span>
-                                                        <span class="menu-title">
-                                                            SMS
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                                <div class="menu-item">
-                                                    <a class="menu-link" href="html/demo1/account/home/settings-sidebar.html">
-                                                        <span class="menu-icon">
-                                                            <i class="ki-filled ki-notification-status">
-
-                                                            </i>
-                                                        </span>
-                                                        <span class="menu-title">
-                                                            Push
-                                                        </span>
-                                                    </a>
-                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="flex flex-col gap-2">
+                                                                <span class="text-2sm text-gray-600 leading-3">
+                                                                    {{ $user['user_view_type'] }}
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="flex flex-col gap-2">
+                                                                <span class="text-2sm text-gray-600 leading-3">
+                                                                    {{ \Illuminate\Support\Number::abbreviate($user['total_stars']) }}
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="flex flex-col gap-2">
+                                                                <span class="text-2sm text-gray-600 leading-3">
+                                                                    {{ $user['total_repos'] }}
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="flex flex-col gap-2">
+                                                                <span class="text-2sm text-gray-600 leading-3">
+                                                                    {{ $user['total_followers'] }}
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </div>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-footer justify-center md:justify-between flex-col md:flex-row gap-5 text-gray-600 text-2sm font-medium">
+                                        <div class="flex items-center gap-2 order-2 md:order-1">
+                                            Show
+                                            <select
+                                                wire:model.live="perPage"
+                                                disabled="disabled"
+                                                class="select select-sm w-16"
+                                                name="perpage">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                            </select>
+                                            per page
+                                        </div>
+                                        <div class="flex items-center gap-4 order-1 md:order-2">
+                                            <span data-datatable-info="true"></span>
+                                            <div class="pagination" data-datatable-pagination="true">
                                             </div>
                                         </div>
-                                        <div class="menu-item">
-                                            <a class="menu-link" data-modal-toggle="#report_user_modal" href="#">
-                                                <span class="menu-icon">
-                                                    <i class="ki-filled ki-dislike">
-
-                                                    </i>
-                                                </span>
-                                                <span class="menu-title">
-                                                    Report
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="menu-separator">
-
-                                        </div>
-                                        <div class="menu-item">
-                                            <a class="menu-link" href="html/demo1/account/home/settings-enterprise.html">
-                                                <span class="menu-icon">
-                                                    <i class="ki-filled ki-setting-3">
-
-                                                    </i>
-                                                </span>
-                                                <span class="menu-title">
-                                                    Settings
-                                                </span>
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card-body flex flex-col gap-4 p-5 lg:p-7.5 lg:pt-4">
-                            <div class="flex flex-col gap-0.5">
-                                <span class="text-sm font-medium text-gray-600">
-                                    All time sales
-                                </span>
-                                <div class="flex items-center gap-2.5">
-                                    <span class="text-3xl font-semibold text-gray-900">
-                                        $295.7k
-                                    </span>
-                                    <span class="badge badge-outline badge-success badge-sm">
-                                        +2.7%
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-1 mb-1.5">
-                                <div class="bg-success h-2 w-full max-w-[60%] rounded-sm">
-
-                                </div>
-                                <div class="bg-brand h-2 w-full max-w-[25%] rounded-sm">
-
-                                </div>
-                                <div class="bg-info h-2 w-full max-w-[15%] rounded-sm">
-
-                                </div>
-                            </div>
-                            <div class="flex items-center flex-wrap gap-4 mb-1">
-                                <div class="flex items-center gap-1.5">
-                                    <span class="badge badge-dot size-2 badge-success">
-
-                                    </span>
-                                    <span class="text-sm font-medium text-gray-700">
-                                        Metronic
-                                    </span>
-                                </div>
-                                <div class="flex items-center gap-1.5">
-                                    <span class="badge badge-dot size-2 badge-danger">
-
-                                    </span>
-                                    <span class="text-sm font-medium text-gray-700">
-                                        Bundle
-                                    </span>
-                                </div>
-                                <div class="flex items-center gap-1.5">
-                                    <span class="badge badge-dot size-2 badge-info">
-
-                                    </span>
-                                    <span class="text-sm font-medium text-gray-700">
-                                        MetronicNest
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="border-b border-gray-300">
-
-                            </div>
-                            <div class="grid gap-3">
-                                <div class="flex items-center justify-between flex-wrap gap-2">
-                                    <div class="flex items-center gap-1.5">
-                                        <i class="ki-filled ki-shop text-base text-gray-500">
-
-                                        </i>
-                                        <span class="text-sm font-medium text-gray-800">
-                                            Online Store
-                                        </span>
-                                    </div>
-                                    <div class="flex items-center text-sm font-medium text-gray-800 gap-6">
-                                        <span class="lg:text-right">
-                                            $172k
-                                        </span>
-                                        <span class="lg:text-right">
-                                            <i class="ki-filled ki-arrow-up text-success">
-
-                                            </i>
-                                            3.9%
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between flex-wrap gap-2">
-                                    <div class="flex items-center gap-1.5">
-                                        <i class="ki-filled ki-facebook text-base text-gray-500">
-
-                                        </i>
-                                        <span class="text-sm font-medium text-gray-800">
-                                            Facebook
-                                        </span>
-                                    </div>
-                                    <div class="flex items-center text-sm font-medium text-gray-800 gap-6">
-                                        <span class="lg:text-right">
-                                            $85k
-                                        </span>
-                                        <span class="lg:text-right">
-                                            <i class="ki-filled ki-arrow-down text-danger">
-
-                                            </i>
-                                            0.7%
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between flex-wrap gap-2">
-                                    <div class="flex items-center gap-1.5">
-                                        <i class="ki-filled ki-instagram text-base text-gray-500">
-
-                                        </i>
-                                        <span class="text-sm font-medium text-gray-800">
-                                            Instagram
-                                        </span>
-                                    </div>
-                                    <div class="flex items-center text-sm font-medium text-gray-800 gap-6">
-                                        <span class="lg:text-right">
-                                            $36k
-                                        </span>
-                                        <span class="lg:text-right">
-                                            <i class="ki-filled ki-arrow-up text-success">
-
-                                            </i>
-                                            8.2%
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-span-2">
-                    <div class="card h-full">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                Earnings
-                            </h3>
-                            <div class="flex gap-5">
-                                <label class="switch switch-sm">
-                                    <input class="order-2" name="check" type="checkbox" value="1"/>
-                                    <span class="switch-label order-1">
-                                        Referrals only
-                                    </span>
-                                </label>
-                                <select class="select select-sm w-28" name="select">
-                                    <option value="1">
-                                        1 month
-                                    </option>
-                                    <option value="2">
-                                        3 month
-                                    </option>
-                                    <option value="3">
-                                        6 month
-                                    </option>
-                                    <option selected="" value="4">
-                                        12 month
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="card-body flex flex-col justify-end items-stretch grow px-3 py-1">
-                            <div id="earnings_chart">
-
                             </div>
                         </div>
                     </div>

@@ -21,9 +21,6 @@ class RepoUser
             $response = $client->get("/users/{$username}/repos", [
                 'query' => [
                     'type' => 'owner',
-                    'sort' => 'stars',
-                    'direction' => 'desc',
-                    'per_page' => 100
                 ]
             ]);
 
